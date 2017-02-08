@@ -1,4 +1,4 @@
-# HBB4ALL Subtitles Plugin for VideoJS Player
+# HBB4ALL Sign Language Plugin for VideoJS Player
 
 ##Hybrid Broadcast Broadband For ALL
 
