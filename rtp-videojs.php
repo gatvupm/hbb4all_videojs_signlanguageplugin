@@ -350,13 +350,15 @@ function cargaepisodios($episodes){
 		$episode_number = $objetoselec2['episode_number'];
 		$episode_title = $objetoselec2['episode_title'];
 		$episode_description = $objetoselec2['episode_description'];
+		$episode_id = $objetoselec2['episode_id'];
 		//echo "<p>Jornal da tarde. Episode: ".$episodes.". Air date: ".$asset_air_date.". Thumbnail: ".$asset_thumbnail."</p>";
 		//echo "program_id: ".$programId2."\nprogramRewrite: ".$programRewrite2."\nprogramTitle: ".$programTitle2."\nprogramImage: ".$programImage2."\r";
 
 
 		curl_close($ch);
 		
-		$url3 = "http://api.rtp.pt/play/api/1/get-asset/".$asset_id.'<br>';
+		$url3 = "http://api.rtp.pt/play/api/1/get-episode/3071/".$episode_id."?include_assets=true";
+		//$url3 = "http://api.rtp.pt/play/api/1/get-asset/".$asset_id.'<br>';
 		
 		$ch3 = curl_init();
 		$timestamp = time();
@@ -379,7 +381,7 @@ function cargaepisodios($episodes){
 		$resultante3 = curl_exec($ch3);
 		$json3 = json_decode($resultante3, true);
 		
-		$objetoselec3= $json3['result'][0];
+		$objetoselec3= $json3['result']['assets'][0];
 		$url_asset = $objetoselec3["rights_api"];
 		$url_asset_file = $objetoselec3["rights_api"];
 		$url_download = $objetoselec3["download_url"];
